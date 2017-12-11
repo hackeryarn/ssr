@@ -4,6 +4,7 @@ export default function renderFullPage(html) {
         <html>
         <head>
             <title>SSR React</title>
+            <link rel="stylesheet" type="text/css" href="/styles.css"
         </head>
         </html>
         <body>

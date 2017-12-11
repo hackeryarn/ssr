@@ -4,24 +4,28 @@
   "description": "testing ssr modules",
   "main": "index.js",
   "scripts": {
-    "build": "babel ./app -d build",
-    "build:watch": "babel ./app -d build --watch",
-    "build:client": "webpack --config ./config/webpack.client.config.js/",
-    "build:watch:client": "webpack --config ./config/webpack.client.config.js/ --watch",
+    "build": "webpack --config ./webpack/server.config.js/",
+    "build:watch": "webpack --config ./webpack/server.config.js/ --watch",
+    "build:client": "webpack --config ./webpack/client.config.js/",
+    "build:watch:client": "webpack --config ./webpack/client.config.js/ --watch",
     "build:prod": "npm run build && npm run build:client",
-    "start": "npm run build:prod && NODE_ENV=production node ./build/server/index.js",
-    "start:dev": "parallelshell 'npm run build:watch' 'npm run build:watch:client' 'nodemon ./build/server/index.js'"
+    "start": "npm run build:prod && NODE_ENV=production node ./build/server.js",
+    "start:dev": "parallelshell 'npm run build:watch' 'npm run build:watch:client' 'nodemon ./build/server.js'"
   },
   "author": "Artem Chernyak",
   "license": "ISC",
   "dependencies": {
     "babel-preset-stage-0": "^6.24.1",
     "cors": "^2.8.4",
+    "css-loader": "^0.28.7",
     "dev": "^0.1.3",
     "express": "^4.16.2",
+    "extract-text-webpack-plugin": "^3.0.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-router-dom": "^4.2.2"
+    "react-router-dom": "^4.2.2",
+    "style-loader": "^0.19.0",
+    "webpack-node-externals": "^1.6.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

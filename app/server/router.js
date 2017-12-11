@@ -12,7 +12,7 @@ export default function router(req, res) {
     }, null);
 
     if (!match) {
-        res.status(404).send('page not found');
+        res.status(400).send('page not found');
         return;
     }
 
