@@ -1,0 +1,36 @@
+{
+  "name": "ssr",
+  "version": "1.0.0",
+  "description": "testing ssr modules",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel ./app -d build",
+    "build:watch": "babel ./app -d build --watch",
+    "build:client": "webpack --config ./config/webpack.client.config.js/",
+    "build:watch:client": "webpack --config ./config/webpack.client.config.js/ --watch",
+    "build:prod": "npm run build && npm run build:client",
+    "start": "npm run build:prod && NODE_ENV=production node ./build/server/index.js",
+    "start:dev": "parallelshell 'npm run build:watch' 'npm run build:watch:client' 'nodemon ./build/server/index.js'"
+  },
+  "author": "Artem Chernyak",
+  "license": "ISC",
+  "dependencies": {
+    "babel-preset-stage-0": "^6.24.1",
+    "cors": "^2.8.4",
+    "dev": "^0.1.3",
+    "express": "^4.16.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "nodemon": "^1.12.5",
+    "parallelshell": "^3.0.2",
+    "webpack": "^3.10.0"
+  }
+}
